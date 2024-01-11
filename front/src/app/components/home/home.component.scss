@@ -1,0 +1,51 @@
+.page-header {
+    padding: 30px;
+    padding-bottom: 0;
+}
+
+.panels {
+    display: flex;
+}
+
+.panel {
+    width: 50%;
+    padding: 30px;
+
+    .form-inline {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+
+        input {
+            padding: 7px;
+            width: 200px;
+        }
+
+        .btn {
+            padding: 7px;
+            width: 140px;
+            margin: 0 auto;
+            cursor: pointer;
+
+            &:active{
+                background-color: darkorange;
+                color: white;
+                border: none;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    table {
+        margin-top: 30px;
+        border-color: darkorange;
+
+        td {
+            padding: 10px;
+
+            .checkbox {
+                cursor: pointer;
+            }
+        }
+    }
+}

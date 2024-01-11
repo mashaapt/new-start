@@ -1,0 +1,53 @@
+<div class="calc">
+  <caption>
+    Calculator
+  </caption>
+
+
+  <div class="displayedValue">
+    {{sign === 1 ? '' : '-'}}{{displayValue}}
+  </div>
+
+
+  <table border="2">
+
+
+
+    <tbody>
+
+      <tr>
+        <th (click)="clickClear()">{{ displayHasNumber ? 'C' : 'AC'}}</th>
+        <th (click)="clickChangeSign()">+/-</th>
+        <th (click)="clickPercent()">%</th>
+        <th class="yellow" [class.active]="lastOperator === '/'" (click)="clickedOperator('/')">/</th>
+      </tr>
+
+      <tr>
+        <td (click)="clickNum(7)">7</td>
+        <td (click)="clickNum(8)">8</td>
+        <td (click)="clickNum(9)">9</td>
+        <td class="yellow" [class.active]="lastOperator === '*'" (click)="clickedOperator('*')">x</td>
+      </tr>
+
+      <tr>
+        <td (click)="clickNum(4)">4</td>
+        <td (click)="clickNum(5)">5</td>
+        <td (click)="clickNum(6)">6</td>
+        <td class="yellow" [class.active]="lastOperator === '-'" (click)="clickedOperator('-')">-</td>
+      </tr>
+
+      <tr>
+        <td (click)="clickNum(1)">1</td>
+        <td (click)="clickNum(2)">2</td>
+        <td (click)="clickNum(3)">3</td>
+        <td class="yellow" [class.active]="lastOperator === '+'" (click)="clickedOperator('+')">+</td>
+      </tr>
+
+      <tr>
+        <td colspan="2" style="text-align: center;" (click)="clickNum(0)">0</td>
+        <td (click)="clickComma()">,</td>
+        <td class="yellow" (click)="clickEquals()">=</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

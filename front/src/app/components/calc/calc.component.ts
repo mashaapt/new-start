@@ -20,9 +20,11 @@ export class CalcComponent {
   result: number;
   deleteLastVal: boolean;
   deleteAllVals: boolean;
-  savedPreviousNum: number;
-  // isResultAfterMath: boolean = false;
-  anotherRound = false;
+  // savedPreviousNum: number;
+  // anotherRound = false;
+
+  justCalculated = false;
+
 
   clickedChangeSign() {
     if (this.sign) {
@@ -30,53 +32,45 @@ export class CalcComponent {
     }
   }
 
-  onClickVal(lastVal: string) {
+  onClickVal(clickedVal: string) {
 
-    if (this.currVal === '0' || this.operator || this.anotherRound) {
+    if (this.currVal === '0' || this.operator ) {
       this.displayHasLastNum = true;
-      this.currVal = lastVal.toString();
-    }
-    // else if (this.isResultAfterMath === true) {
-    //   this.lastVal = this.savedPreviousNum;
-    //   this.currVal += lastVal.toString();
-    // }
-    else {
-      this.lastVal = this.savedPreviousNum;
-      this.currVal += lastVal.toString();
+
+      // if(this.savedPreviousNum) {
+      //   this.lastVal = this.savedPreviousNum;
+      //   // this.currVal += clickedVal.toString();
+      // }
+
+      if(this.result) {
+        this.lastVal = this.result;
+      }
+
+      this.currVal = clickedVal.toString();
+    } else {
+      
+      this.currVal += clickedVal.toString();
     }
 
-    console.log(lastVal);
+    console.log(clickedVal);
 
   }
 
 
   clickedOperator(selectedOperator: Operator) {
-    if (this.operator) {
-      // this.anotherRound;
-      this.calculateResult();
-    }
-    // else if (this.isResultAfterMath) {
-    //     // this.currVal = '0';
-    //     // this.onClickVal(this.lastVal)
-    //     // this.currVal += this.lastVal.toString();
-    //     // this.calculateResultAfterFirstMath();
+   
+    if(!this.justCalculated) {
 
-    //     this.lastVal = this.savedPreviousNum;
-    //     this.calculateResult();
-    //     this.savedPreviousNum = this.result;
-    //     // this.savedPreviousNum = this.lastVal;
-    //     this.isResultAfterMath = true;
-
-      
-    else if (this.operator && this.savedPreviousNum) {
-      this.anotherRound = true;
-      this.calculateResult();
-    } 
-    else {
-      this.lastVal = +this.currVal;
-
+      if (this.operator) {
+   
+        this.calculateResult();
+      } else if(selectedOperator !== this.operator) { 
+        this.lastVal = +this.currVal;
+  
+      }
     }
 
+    this.justCalculated = false;
     this.operator = selectedOperator;
 
 
@@ -85,11 +79,20 @@ export class CalcComponent {
 
   calculateResult() {
     const currVal = +this.currVal;
+    this.currVal = '0';
+    
+    // if (this.savedPreviousNum) {
+    //   this.lastVal = this.savedPreviousNum;
+    //   this.savedPreviousNum = null;
+    // }
 
-    if (this.savedPreviousNum && !this.anotherRound) {
-      // this.onClickVal(currVal);
-      this.lastVal = this.savedPreviousNum;
+    if(this.result) {
+      this.lastVal = this.result;
+      
     }
+
+    this.justCalculated = true;
+    
     switch (this.operator) {
       case '/':
         this.result = this.lastVal / currVal;
@@ -107,29 +110,10 @@ export class CalcComponent {
         console.log('error')
         break;
     }
+
+    
   }
 
-  // calculateResultAfterFirstMath() {
-  //   const currVal = +this.currVal;
-
-  //   switch (this.operator) {
-  //     case '/':
-  //       this.result = this.savedPreviousNum / currVal;
-  //       break;
-  //     case '*':
-  //       this.result = this.savedPreviousNum * currVal;
-  //       break;
-  //     case '-':
-  //       this.result = this.savedPreviousNum - currVal;
-  //       break;
-  //     case '+':
-  //       this.result = this.savedPreviousNum + currVal;
-  //       break;
-  //     default:
-  //       console.log('error')
-  //       break;
-  //   }
-  // }
   clickedComma() {
     this.currVal += '.';
     this.isDecimal = true;
@@ -147,19 +131,18 @@ export class CalcComponent {
   clickedClear() {
     if (this.result) {
 
-      this.savedPreviousNum = this.result;
+      this.lastVal = this.result;
       this.result = null;
       this.deleteAllVals = true;
-      // this.isResultAfterMath = true;
     } else {
       this.deleteLastVal = true;
       this.lastVal = null;
     }
 
 
-    if(!this.displayHasLastNum) {
-      this.anotherRound = false;
-    }
+    // if(!this.displayHasLastNum) {
+    //   this.anotherRound = false;
+    // }
 
 
     this.currVal = '0';

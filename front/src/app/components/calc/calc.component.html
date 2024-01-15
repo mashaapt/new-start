@@ -4,49 +4,50 @@
     </caption>
   
   
-    <div class="displayedValue">
+    result: {{result}} <br/>
+    currVal: {{currVal}} <br/>
+    lastVal: {{lastVal}} <br/>
+    <br/>
+    <br/>
+    
+    <div data-cy="result" class="displayedValue">
       {{sign === 1 ? '' : '-'}}{{result || currVal}}
     </div>
   
-  
     <table border="2">
-  
-  
-  
       <tbody>
-  
         <tr>
-          <th (click)="clickedClear()">{{ displayHasLastNum ? 'C' : 'AC'}}</th>
-          <th (click)="clickedChangeSign()">+/-</th>
-          <th (click)="clickedPercent()">%</th>
-          <th class="yellow" (click)="clickedOperator('/')">/</th>
+          <th data-cy="clear" (click)="clickedClear()">{{ displayHasLastNum ? 'C' : 'AC'}}</th>
+          <th data-cy="sign" (click)="clickedChangeSign()">+/-</th>
+          <th data-cy="percent" (click)="clickedPercent()">%</th>
+          <th data-cy="divide" class="yellow" (click)="clickedOperator('/')">/</th>
         </tr>
   
         <tr>
-          <td (click)="onClickVal('7')">7</td>
-          <td (click)="onClickVal('8')">8</td>
-          <td (click)="onClickVal('9')">9</td>
-          <td class="yellow" (click)="clickedOperator('*')">*</td>
+          <td data-cy="num7" (click)="onClickVal('7')">7</td>
+          <td data-cy="num8" (click)="onClickVal('8')">8</td>
+          <td data-cy="num9" (click)="onClickVal('9')">9</td>
+          <td data-cy="multiply" class="yellow" (click)="clickedOperator('*')">*</td>
         </tr>
   
         <tr>
-          <td (click)="onClickVal('4')">4</td>
-          <td (click)="onClickVal('5')">5</td>
-          <td (click)="onClickVal('6')">6</td>
-          <td class="yellow" (click)="clickedOperator('-')">-</td>
+          <td data-cy="num4" (click)="onClickVal('4')">4</td>
+          <td data-cy="num5" (click)="onClickVal('5')">5</td>
+          <td data-cy="num6" (click)="onClickVal('6')">6</td>
+          <td data-cy="subtract" class="yellow" (click)="clickedOperator('-')">-</td>
         </tr>
   
         <tr>
-          <td (click)="onClickVal('1')">1</td>
-          <td (click)="onClickVal('2')">2</td>
-          <td (click)="onClickVal('3')">3</td> 
-          <td class="yellow" (click)="clickedOperator('+')">+</td> 
+          <td data-cy="num1" (click)="onClickVal('1')">1</td>
+          <td data-cy="num2" (click)="onClickVal('2')">2</td>
+          <td data-cy="num3" (click)="onClickVal('3')">3</td> 
+          <td data-cy="plus" class="yellow" (click)="clickedOperator('+')">+</td> 
         </tr>
   
         <tr>
-          <td colspan="2" style="text-align: center;" (click)="onClickVal('0')">0</td>
-          <td (click)="clickedComma()">.</td>
-          <td class="yellow" (click)="clickedEquals()">=</td>
+          <td data-cy="num0" colspan="2" style="text-align: center;" (click)="onClickVal('0')">0</td>
+          <td data-cy="comma" (click)="clickedComma()">.</td>
+          <td data-cy="equals" class="yellow" (click)="clickedEquals()">=</td>
         </tr>
       </tbody>
     </table>

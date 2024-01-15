@@ -1,0 +1,11 @@
+{
+    "extends": "../tsconfig.json",
+    "include": ["/*.cy.ts", "/*.spec.ts", "**/*.e2e.ts"],
+    "compilerOptions": {
+       "sourceMap": false,
+       "esModuleInterop": true,
+       "allowSyntheticDefaultImports": true,
+       "types": ["node", "cypress"],
+       "target": "ES2022"
+    }
+ }

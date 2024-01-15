@@ -16,37 +16,37 @@
     <tbody>
 
       <tr>
-        <th (click)="clickClear()">{{ displayHasNumber ? 'C' : 'AC'}}</th>
-        <th (click)="clickChangeSign()">+/-</th>
-        <th (click)="clickPercent()">%</th>
-        <th class="yellow" [class.active]="lastOperator === '/'" (click)="clickedOperator('/')">/</th>
+        <th data-cy="clear" (click)="clickClear()">{{ displayHasNumber ? 'C' : 'AC'}}</th>
+        <th data-cy="sign" (click)="clickChangeSign()">+/-</th>
+        <th data-cy="percent" (click)="clickPercent()">%</th>
+        <th data-cy="divide" class="yellow" [class.active]="lastOperator === '/'" (click)="clickedOperator('/')">/</th>
       </tr>
 
       <tr>
-        <td (click)="clickNum(7)">7</td>
-        <td (click)="clickNum(8)">8</td>
-        <td (click)="clickNum(9)">9</td>
-        <td class="yellow" [class.active]="lastOperator === '*'" (click)="clickedOperator('*')">x</td>
+        <td data-cy="num7" (click)="clickNum(7)">7</td>
+        <td data-cy="num8" (click)="clickNum(8)">8</td>
+        <td data-cy="num9" (click)="clickNum(9)">9</td>
+        <td data-cy="multiply" class="yellow" [class.active]="lastOperator === '*'" (click)="clickedOperator('*')">x</td>
       </tr>
 
       <tr>
-        <td (click)="clickNum(4)">4</td>
-        <td (click)="clickNum(5)">5</td>
-        <td (click)="clickNum(6)">6</td>
-        <td class="yellow" [class.active]="lastOperator === '-'" (click)="clickedOperator('-')">-</td>
+        <td data-cy="num4" (click)="clickNum(4)">4</td>
+        <td data-cy="num5" (click)="clickNum(5)">5</td>
+        <td data-cy="num6" (click)="clickNum(6)">6</td>
+        <td data-cy="subtract" class="yellow" [class.active]="lastOperator === '-'" (click)="clickedOperator('-')">-</td>
       </tr>
 
       <tr>
-        <td (click)="clickNum(1)">1</td>
-        <td (click)="clickNum(2)">2</td>
-        <td (click)="clickNum(3)">3</td>
-        <td class="yellow" [class.active]="lastOperator === '+'" (click)="clickedOperator('+')">+</td>
+        <td data-cy="num1" (click)="clickNum(1)">1</td>
+        <td data-cy="num2" (click)="clickNum(2)">2</td>
+        <td data-cy="num3" (click)="clickNum(3)">3</td>
+        <td data-cy="plus" class="yellow" [class.active]="lastOperator === '+'" (click)="clickedOperator('+')">+</td>
       </tr>
 
       <tr>
-        <td colspan="2" style="text-align: center;" (click)="clickNum(0)">0</td>
-        <td (click)="clickComma()">,</td>
-        <td class="yellow" (click)="clickEquals()">=</td>
+        <td data-cy="num0" colspan="2" style="text-align: center;" (click)="clickNum(0)">0</td>
+        <td data-cy="comma" (click)="clickComma()">,</td>
+        <td data-cy="equals" class="yellow" (click)="clickEquals()">=</td>
       </tr>
     </tbody>
   </table>
